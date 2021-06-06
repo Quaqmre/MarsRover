@@ -8,11 +8,13 @@ import (
 var directionBigConstant int = 8
 var directionLowConstant int = 1
 
+//Yön bulmakla görevlidir.Tek amacı yön bulmaktır.
 type Compass struct {
 	Direction       int
 	DirectionString string
 }
 
+// Yönlerin mod4 ile birbirini tekrarladığı için yönleri binary çevirir.
 func NewCompass(d rune) (*Compass, error) {
 	compass := Compass{}
 	switch d {
@@ -31,6 +33,7 @@ func NewCompass(d rune) (*Compass, error) {
 	return &compass, nil
 }
 
+//Emir yön emriyse yeni yönün ne olacağını belirler.
 func (c *Compass) TurnCompass(t rune) error {
 	switch t {
 	case 'R':

@@ -4,6 +4,7 @@ import (
 	"github/Quaqmre/MarsRover/rover"
 )
 
+// Marsta bulunan platoyu temsil eder
 type Plato struct {
 	lowerX int
 	lowerY int
@@ -24,10 +25,12 @@ func NewPlato(maxX, maxY int, r *rover.Rover) *Plato {
 	return &plato
 }
 
+// Plato üzerinde gezecek olan roveri bulur.
 func (p *Plato) SetRover(r *rover.Rover) {
 	p.r = r
 }
 
+// Plato üzerinde bulunan Roverin arama görebini başlatır.
 func (p *Plato) Search() (int, int, int) {
 
 	for p.r.Commands.GetNextCommand() == nil {

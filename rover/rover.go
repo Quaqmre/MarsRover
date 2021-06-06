@@ -8,6 +8,7 @@ import (
 	"log"
 )
 
+// Marsta görevli Aracımızdır.
 type Rover struct {
 	Compass  *compass.Compass
 	cordX    int
@@ -15,6 +16,7 @@ type Rover struct {
 	Commands *command.Command
 }
 
+//Belli parametreler ile Rover oluşturmamızı sağlar
 func NewRover(x, y int, d rune) (rover *Rover, err error) {
 	rover = &Rover{}
 	rover.Compass, err = compass.NewCompass(d)
@@ -25,6 +27,8 @@ func NewRover(x, y int, d rune) (rover *Rover, err error) {
 	rover.cordY = y
 	return rover, nil
 }
+
+//Rover üzerine yerleştirilen yön bulma algoritmasıdır.
 func (r *Rover) SetCompass(c *compass.Compass) {
 	if c == nil {
 		log.Fatal("SetCompass - can not be null")
@@ -32,6 +36,7 @@ func (r *Rover) SetCompass(c *compass.Compass) {
 	r.Compass = c
 }
 
+//Gelen emirler Rover'imize yüklenir.
 func (r *Rover) SetCommands(cm *command.Command) {
 	if cm == nil {
 		log.Fatal("SetCompass - cannot be null")
@@ -39,6 +44,7 @@ func (r *Rover) SetCommands(cm *command.Command) {
 	r.Commands = cm
 }
 
+// Gelen emirleri 2 katagoride değerlendirmemizi sağlar
 func (r *Rover) ResolveCommand(c rune) error {
 	switch c {
 	case 'L', 'R':
@@ -56,10 +62,12 @@ func (r *Rover) ResolveCommand(c rune) error {
 	}
 }
 
+// Roverin bulunduğu durumun bilgisini döner.
 func (r *Rover) GetCordinant() (int, int, int) {
 	return r.cordX, r.cordY, r.Compass.Direction
 }
 
+// Plato üzerinde arama yapmak hareket algoritmasını oluşturur.
 func (r *Rover) Move() error {
 
 	switch r.Compass.Direction {

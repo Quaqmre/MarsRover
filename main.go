@@ -16,15 +16,23 @@ import (
 
 func main() {
 	fmt.Println("Hello \nWelcome to the my Code Challange \nMars Rover \nMy Name is Mehmet Akif Tatar")
+
+	// Plato,rover ve yönlendirme bilgileri alınır.
 	platoX, platoY, roverX, roverY, roverDirct, commands := ReadStdIn()
 
+	//Alınan bilgiler ile command oluşturulur.
 	command := command.NewCommand(commands)
+
+	//Alınan bilgiler ile pusula oluşturulur
 	compass, err := compass.NewCompass(roverDirct)
 	if err != nil {
 		log.Fatal(err)
 	}
 
+	//Alınan bilgiler ile Rover oluşturulur.
 	rover, err := rover.NewRover(roverX, roverY, roverDirct)
+
+	//Rovera pusula ve emir bilgileri yüklenir.
 	rover.SetCommands(command)
 	rover.SetCompass(compass)
 
@@ -33,9 +41,13 @@ func main() {
 
 	}
 
+	//Aracın üzerinde hareket edeceği plato oluşturulur
 	plato := plato.NewPlato(platoX, platoY, rover)
 
+	//Plato üzerinde arayış başlar
 	x, y, d := plato.Search()
+
+	//Binary yön tekrar 'N','W'.. gibi anlaşılır yönlere çevrilir
 	direct := BinaryToDirection(d)
 
 	fmt.Println("Solve:")
@@ -61,6 +73,7 @@ func BinaryToDirection(i int) string {
 	return direction
 }
 
+// Console üzerinden okumamız için kullanılan function
 func ReadStdIn() (int, int, int, int, rune, string) {
 	scanner := bufio.NewScanner(os.Stdin)
 	stdin1 := ""

@@ -2,6 +2,8 @@ package command
 
 import "fmt"
 
+//Gelen emirleri uygulamak ve ayırmak için kullanılır
+//Tek yaptığı iş emir bulmaktır.
 type Command struct {
 	allCommands         string
 	currentCommand      rune
@@ -18,10 +20,12 @@ func NewCommand(com string) *Command {
 	return &cm
 }
 
+//Sıradaki emiri alır.
 func (cm *Command) GetCurrentCommand() rune {
 	return cm.currentCommand
 }
 
+// Yerine getirilen emir sonrası yeni emir bulur.
 func (cm *Command) GetNextCommand() error {
 	if cm.currentCommandIndex == len(cm.allCommands) {
 		return fmt.Errorf("end of the plato len(%v) - commandIndex(%v)", len(cm.allCommands), cm.currentCommandIndex)
