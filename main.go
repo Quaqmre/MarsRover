@@ -15,7 +15,7 @@ import (
 )
 
 func main() {
-	fmt.Println("Hello \nWelcome to the my Code Challange \nMars Rover \nMy Name is Mehmet Akif Tatar")
+	fmt.Println("Hello \nWelcome to my Code Challenge for HepsiBurada \nMars Rover \nMy Name is Mehmet Akif Tatar")
 
 	// Plato,rover ve yönlendirme bilgileri alınır.
 	platoX, platoY, roverX, roverY, roverDirct, commands := ReadStdIn()
@@ -53,7 +53,7 @@ func main() {
 	fmt.Println("Solve:")
 	fmt.Println(x, y, direct)
 
-	fmt.Println("Good job rover")
+	fmt.Println("Good job, Rover")
 
 }
 
@@ -82,11 +82,11 @@ func ReadStdIn() (int, int, int, int, rune, string) {
 
 	for i := 1; i <= 3; i++ {
 		if i == 1 {
-			fmt.Println("Get plato cordites like,5 5")
+			fmt.Println("Get plato coordinates like,5 5")
 			scanner.Scan()
 			stdin1 = scanner.Text()
 		} else if i == 2 {
-			fmt.Println("Get rover cordites like,1 2 N")
+			fmt.Println("Get rover coordinates like,1 2 N")
 			scanner.Scan()
 			stdin2 = scanner.Text()
 		} else {

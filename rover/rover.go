@@ -39,7 +39,7 @@ func (r *Rover) SetCompass(c *compass.Compass) {
 //Gelen emirler Rover'imize yüklenir.
 func (r *Rover) SetCommands(cm *command.Command) {
 	if cm == nil {
-		log.Fatal("SetCompass - cannot be null")
+		log.Fatal("SetCompass - can not be null")
 	}
 	r.Commands = cm
 }
@@ -80,7 +80,7 @@ func (r *Rover) Move() error {
 	case 1 << 1:
 		r.cordY -= 1
 	default:
-		log.Println("I cant Move :)")
+		log.Println("I can't Move :)")
 		return errors.New("out of range")
 
 	}
